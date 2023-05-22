@@ -45,18 +45,15 @@
                 }
             }
         }
-        var_dump($componentsPassword);
+        // var_dump($componentsPassword);
     }
 
     // dall'array contenente i componenti della password viene estrapolata una stringa e cioè la mia password
-    $implodeArray=implode($componentsPassword);
-    var_dump($implodeArray);
-    echo $implodeArray
+    $passwordString = implode($componentsPassword);
+    // var_dump($passwordString);
+    // echo $passwordString;
 
 ?>
-
-
-
 
 <!DOCTYPE html>
 <html lang='en'>
@@ -77,6 +74,15 @@
             <h2 class="text-white">Genera una password sicura</h2>
         </header>
 
+        <!-- visualizzazione password -->
+        <div id="ciao" class="p-4 mb-3 rounded text-center">
+            <span>La password generata è:</span>
+            <h3 class="text-success mt-3">
+                <?php echo $passwordString?>
+            </h3>
+        </div>
+
+        <!-- container del form -->
         <main class="p-4 bg-white rounded">
             <!-- inizio form  -->
             <form action="" method="GET">
@@ -143,5 +149,12 @@
     
     <!-- script Bootstrap -->
     <script src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js' integrity='sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe'   crossorigin='anonymous'></script>
+
+    <style>
+        #ciao{
+            width: 60%;
+            background-color: #cff4fc;
+        }
+    </style>
 </body>
 </html>
