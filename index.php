@@ -55,19 +55,19 @@
                         </div>
                         <!-- checkbox per selezionare la composizione della password -->
                         <div class="mt-3 form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                            <input class="form-check-input" name="lettersChoice" type="checkbox" id="flexCheckDefault">
                             <label class="text-capitalize form-check-label" for="flexCheckDefault">
                               lettere
                             </label>
                         </div>
                         <div class="form-check">
-                          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                          <input class="form-check-input" name="numbersChoice" type="checkbox" id="flexCheckChecked">
                           <label class="text-capitalize form-check-label" for="flexCheckChecked">
                             numeri
                           </label>
                         </div>
                         <div class="form-check">
-                          <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                          <input class="form-check-input" name="symbolsChoice" type="checkbox" id="flexCheckChecked">
                           <label class="text-capitalize form-check-label" for="flexCheckChecked">
                             simboli
                           </label>

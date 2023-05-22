@@ -2,6 +2,16 @@
     // ricevo dal form l'informazione sulla lunghezza della password da generare
     $_SESSION['passwordLength'] = intval(isset($_GET['passwordLength']) ? $_GET['passwordLength'] : '');
 
+    // ricevo dal form le info su come deve essere formata la password
+    $_SESSION['lettersChoice'] = $_GET['lettersChoice'];
+    // var_dump($_SESSION['lettersChoice']);
+
+    $_SESSION['numbersChoice'] = $_GET['numbersChoice'];
+    // var_dump($_SESSION['numbersChoice']);
+
+    $_SESSION['symbolsChoice'] = $_GET['symbolsChoice'];
+    // var_dump($_SESSION['symbolsChoice']);
+
     $passwordLength = $_SESSION['passwordLength'];
     // var_dump($passwordLength);
 
@@ -22,8 +32,25 @@
     $symbols = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')'];
 
     // concateno gli array precedenti per formare un unico array
-    $arrayConcat = array_merge($letters, $lettersUppercase, $numbers, $symbols);
-
+    // $arrayConcat = array_merge($letters, $lettersUppercase, $numbers, $symbols);
+    $arrayConcat = [];
+    if(isset($_SESSION['lettersChoice']) && isset($_SESSION['numbersChoice']) && isset($_SESSION['symbolsChoice'])){
+        $arrayConcat = array_merge($letters, $lettersUppercase, $numbers, $symbols);
+    }elseif(isset($_SESSION['lettersChoice']) && isset($_SESSION['numbersChoice'])){
+        $arrayConcat = array_merge($letters, $lettersUppercase, $numbers);
+    }elseif(isset($_SESSION['lettersChoice']) && isset($_SESSION['symbolsChoice'])){
+        $arrayConcat = array_merge($letters, $lettersUppercase, $symbols);
+    }elseif(isset($_SESSION['numbersChoice']) && isset($_SESSION['symbolsChoice'])){
+        $arrayConcat = array_merge($numbers, $symbols);
+    }elseif(isset($_SESSION['lettersChoice'])){
+        $arrayConcat = array_merge($letters, $lettersUppercase);
+    }elseif(isset($_SESSION['numbersChoice'])){
+        $arrayConcat = array_merge($numbers);
+    }elseif(isset($_SESSION['symbolsChoice'])){
+        $arrayConcat = array_merge($symbols);
+    }else{
+        $arrayConcat = array_merge($letters, $lettersUppercase, $numbers, $symbols);
+    }
 
     // array vuoto da riempire con lettere,numeri e simboli per formare la password
     $componentsPassword=[];
