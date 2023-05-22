@@ -1,5 +1,5 @@
 <?php
-    include __DIR__ . '/components/functions.php'
+    session_start();
 ?>
 
 <!DOCTYPE html>
@@ -21,18 +21,10 @@
             <h2 class="text-white">Genera una password sicura</h2>
         </header>
 
-        <!-- visualizzazione password -->
-        <div id="ciao" class="p-4 mb-3 rounded text-center">
-            <span>La password generata è:</span>
-            <h3 class="text-success mt-3">
-                <?php echo $passwordString?>
-            </h3>
-        </div>
-
         <!-- container del form -->
         <main class="p-4 bg-white rounded">
             <!-- inizio form  -->
-            <form action="index.php" method="GET">
+            <form action="./components/results.php" method="GET">
                 <!-- inserimento lunghezza password  -->
                 <div class="row row-cols-2 mb-3">
                     <div class="col">
@@ -96,12 +88,5 @@
     
     <!-- script Bootstrap -->
     <script src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js' integrity='sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe'   crossorigin='anonymous'></script>
-
-    <style>
-        #ciao{
-            width: 60%;
-            background-color: #cff4fc;
-        }
-    </style>
 </body>
 </html>

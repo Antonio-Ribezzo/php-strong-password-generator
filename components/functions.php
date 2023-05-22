@@ -1,7 +1,8 @@
 <?php
-
     // ricevo dal form l'informazione sulla lunghezza della password da generare
-    $passwordLength = intval(isset($_GET['passwordLength'])? $_GET['passwordLength'] : '');
+    $_SESSION['passwordLength'] = intval(isset($_GET['passwordLength']) ? $_GET['passwordLength'] : '');
+
+    $passwordLength = $_SESSION['passwordLength'];
     // var_dump($passwordLength);
 
     // creo un array formato dalle lettere dell'alfabeto
@@ -53,7 +54,5 @@
     }
 
     // invoco la funzione
-    GeneraPassword($passwordLength,$arrayConcat,$componentsPassword);
-    
     $passwordString = GeneraPassword($passwordLength,$arrayConcat,$componentsPassword);
 ?>
