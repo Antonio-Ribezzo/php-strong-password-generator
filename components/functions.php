@@ -1,19 +1,14 @@
 <?php
     // ricevo dal form l'informazione sulla lunghezza della password da generare
     $_SESSION['passwordLength'] = intval(isset($_GET['passwordLength']) ? $_GET['passwordLength'] : '');
+    $passwordLength = $_SESSION['passwordLength'];
 
     // ricevo dal form le info su come deve essere formata la password
     $_SESSION['lettersChoice'] = $_GET['lettersChoice'];
-    // var_dump($_SESSION['lettersChoice']);
 
     $_SESSION['numbersChoice'] = $_GET['numbersChoice'];
-    // var_dump($_SESSION['numbersChoice']);
 
     $_SESSION['symbolsChoice'] = $_GET['symbolsChoice'];
-    // var_dump($_SESSION['symbolsChoice']);
-
-    $passwordLength = $_SESSION['passwordLength'];
-    // var_dump($passwordLength);
 
     // creo un array formato dalle lettere dell'alfabeto
     $letters = range('a', 'z');
@@ -31,8 +26,7 @@
     // creo un array di simboli
     $symbols = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')'];
 
-    // concateno gli array precedenti per formare un unico array
-    // $arrayConcat = array_merge($letters, $lettersUppercase, $numbers, $symbols);
+    // concateno gli array precedenti per formare un unico array da cui prendere gli elementi per creare la password
     $arrayConcat = [];
     if(isset($_SESSION['lettersChoice']) && isset($_SESSION['numbersChoice']) && isset($_SESSION['symbolsChoice'])){
         $arrayConcat = array_merge($letters, $lettersUppercase, $numbers, $symbols);
@@ -75,8 +69,6 @@
             }
             // dall'array contenente i componenti della password viene estrapolata una stringa e cioè la mia password
             return implode($arrayComponents);
-            // var_dump($passwordString);
-            // echo $passwordString;
         }
     }
 
