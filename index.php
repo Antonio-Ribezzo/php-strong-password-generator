@@ -1,3 +1,33 @@
+<?php
+
+    $passwordLength = $_GET['passwordLength'];
+    // var_dump ($passwordLength);
+    $letters = range('a', 'z');
+
+    // var_dump($letters);
+    $lettersUppercase = [];
+
+    foreach($letters as $el){
+        $lettersUppercase[] = strtoupper($el);
+    }
+    // var_dump($lettersUppercase);
+
+    $numbers= range(0,9);
+    // var_dump($numbers);
+
+    $symbols = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')'];
+    // var_dump($symbols);
+
+    $arrayConcat = array_merge($letters, $lettersUppercase, $numbers, $symbols);
+    // var_dump($arrayConcat)
+
+    
+
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang='en'>
 <head>
@@ -26,7 +56,7 @@
                         <div>Lunghezza password:</div>
                     </div>
                     <div class="col">
-                        <input type="number">
+                        <input type="number" name="passwordLength">
                     </div>
                 </div>
                 <!-- filtri di scelta -->
