@@ -26,33 +26,35 @@
     // array vuoto da riempire con lettere,numeri e simboli per formare la password
     $componentsPassword=[];
 
-
-    // se il campo del form che chiede la lunghezza della password esite allora parte la logica
-    if($passwordLength){
-        
-        // creo un array che conterrà l'indice degli elementi da prendere dall'array concatenato per formare la password (indice randomico)
-        $posizioniRandom=[];
-        for($i = 0; $i < $passwordLength; $i++){
-            // genero un numero random da zero fino alla lunghezza dell'array da cui prendere gli elemnti della password
-            $posizioniRandom[]=rand(0,count($arrayConcat));
-        }
-
-        // se l'indice dell'array formato dalla concatenazione è uguale all'elemento random dell'array creato precedentemente, l'elemento in questione viene pushato nell'array componentsPassword 
-        foreach($arrayConcat as $chiave => $valore){
-            for($i = 0; $i < $passwordLength; $i++){
-                if($chiave == $posizioniRandom[$i]){
-                    $componentsPassword[]=$valore;
+    // creo la funzione "GeneraPassword"
+    function GeneraPassword ($length,$startArray,$arrayComponents){
+        // se il campo del form che chiede la lunghezza della password esite allora partela logica
+        if($length){
+            // creo un array che conterrà l'indice degli elementi da prendere dall'array concatenato per formare la password (indice randomico)
+            $posizioniRandom=[];
+            for($i = 0; $i < $length; $i++){
+                // genero un numero random da zero fino alla lunghezza dell'array da cui    prendere gli elemnti della password
+                $posizioniRandom[]=rand(0,count($startArray));
+            }
+            // se l'indice dell'array formato dalla concatenazione è uguale all'elemento random dell'array creato precedentemente, l'elemento in questione viene pushato nell'array arrayComponents 
+            foreach($startArray as $chiave => $valore){
+                for($i = 0; $i < $length; $i++){
+                    if($chiave == $posizioniRandom[$i]){
+                        $arrayComponents[]=$valore;
+                    }
                 }
             }
+            // dall'array contenente i componenti della password viene estrapolata una stringa e cioè la mia password
+            return implode($arrayComponents);
+            // var_dump($passwordString);
+            // echo $passwordString;
         }
-        // var_dump($componentsPassword);
     }
 
-    // dall'array contenente i componenti della password viene estrapolata una stringa e cioè la mia password
-    $passwordString = implode($componentsPassword);
-    // var_dump($passwordString);
-    // echo $passwordString;
-
+    // invoco la funzione
+    GeneraPassword($passwordLength,$arrayConcat,$componentsPassword);
+    
+    $passwordString = GeneraPassword($passwordLength,$arrayConcat,$componentsPassword);
 ?>
 
 <!DOCTYPE html>
