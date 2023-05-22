@@ -1,27 +1,57 @@
 <?php
 
-    $passwordLength = $_GET['passwordLength'];
-    // var_dump ($passwordLength);
+    // ricevo dal form l'informazione sulla lunghezza della password da generare
+    $passwordLength = intval($_GET['passwordLength']);
+
+    // creo un array formato dalle lettere dell'alfabeto
     $letters = range('a', 'z');
 
-    // var_dump($letters);
+    // creo un array formato dalle lettere dell'alfabeto in maiuscolo
     $lettersUppercase = [];
 
     foreach($letters as $el){
         $lettersUppercase[] = strtoupper($el);
     }
-    // var_dump($lettersUppercase);
 
+    // creo un array formato dai numeri da 0 a 9
     $numbers= range(0,9);
-    // var_dump($numbers);
 
+    // creo un array di simboli
     $symbols = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')'];
-    // var_dump($symbols);
 
+    // concateno gli array precedenti per formare un unico array
     $arrayConcat = array_merge($letters, $lettersUppercase, $numbers, $symbols);
-    // var_dump($arrayConcat)
 
-    
+
+    // array vuoto da riempire con lettere,numeri e simboli per formare la password
+    $componentsPassword=[];
+
+
+    // se il campo del form che chiede la lunghezza della password esite allora parte la logica
+    if($passwordLength){
+        
+        // creo un array che conterrà l'indice degli elementi da prendere dall'array concatenato per formare la password (indice randomico)
+        $posizioniRandom=[];
+        for($i = 0; $i < $passwordLength; $i++){
+            // genero un numero random da zero fino alla lunghezza dell'array da cui prendere gli elemnti della password
+            $posizioniRandom[]=rand(0,count($arrayConcat));
+        }
+
+        // se l'indice dell'array formato dalla concatenazione è uguale all'elemento random dell'array creato precedentemente, l'elemento in questione viene pushato nell'array componentsPassword 
+        foreach($arrayConcat as $chiave => $valore){
+            for($i = 0; $i < $passwordLength; $i++){
+                if($chiave == $posizioniRandom[$i]){
+                    $componentsPassword[]=$valore;
+                }
+            }
+        }
+        var_dump($componentsPassword);
+    }
+
+    // dall'array contenente i componenti della password viene estrapolata una stringa e cioè la mia password
+    $implodeArray=implode($componentsPassword);
+    var_dump($implodeArray);
+    echo $implodeArray
 
 ?>
 
