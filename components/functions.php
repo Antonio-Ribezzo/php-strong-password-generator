@@ -28,9 +28,7 @@
 
     // concateno gli array precedenti per formare un unico array da cui prendere gli elementi per creare la password
     $arrayConcat = [];
-    if(($_SESSION['lettersChoice']) && ($_SESSION['numbersChoice']) && ($_SESSION['symbolsChoice'])){
-        $arrayConcat = array_merge($letters, $lettersUppercase, $numbers, $symbols);
-    }
+    
     if(($_SESSION['lettersChoice']) && ($_SESSION['numbersChoice'])){
         $arrayConcat = array_merge($letters, $lettersUppercase, $numbers);
     }
@@ -48,6 +46,14 @@
     }
     if(!($_SESSION['symbolsChoice'])&&!($_SESSION['lettersChoice'])){
         $arrayConcat = array_merge($numbers);
+    }
+
+    if(($_SESSION['lettersChoice']) && ($_SESSION['numbersChoice']) && ($_SESSION['symbolsChoice'])){
+        $arrayConcat = array_merge($letters, $lettersUppercase, $numbers, $symbols);
+    }
+
+    if(!($_SESSION['lettersChoice']) && !($_SESSION['numbersChoice']) && !($_SESSION['symbolsChoice'])){
+        $arrayConcat = array_merge($letters, $lettersUppercase, $numbers, $symbols);
     }
 
     // array vuoto da riempire con lettere,numeri e simboli per formare la password
