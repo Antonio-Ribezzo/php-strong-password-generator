@@ -27,7 +27,6 @@
             <span>La password generata è:</span>
             <h3 class="text-success mt-3">
                 <?php
-                    session_start();
                     echo $passwordString
                 ?>
             </h3>
