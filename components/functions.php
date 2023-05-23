@@ -4,11 +4,11 @@
     $passwordLength = $_SESSION['passwordLength'];
 
     // ricevo dal form le info su come deve essere formata la password
-    $_SESSION['lettersChoice'] = isset($_GET['lettersChoice']) ? $_GET['lettersChoice'] : '';
+    $_SESSION['lettersChoice'] = isset($_GET['lettersChoice']);
 
-    $_SESSION['numbersChoice'] = isset($_GET['numbersChoice']) ? $_GET['numbersChoice'] : '';
+    $_SESSION['numbersChoice'] = isset($_GET['numbersChoice']);
 
-    $_SESSION['symbolsChoice'] = isset($_GET['symbolsChoice']) ? $_GET['symbolsChoice'] : '';
+    $_SESSION['symbolsChoice'] = isset($_GET['symbolsChoice']);
 
     // creo un array formato dalle lettere dell'alfabeto
     $letters = range('a', 'z');
