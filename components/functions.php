@@ -28,22 +28,26 @@
 
     // concateno gli array precedenti per formare un unico array da cui prendere gli elementi per creare la password
     $arrayConcat = [];
-    if(isset($_SESSION['lettersChoice']) && isset($_SESSION['numbersChoice']) && isset($_SESSION['symbolsChoice'])){
+    if(($_SESSION['lettersChoice']) && ($_SESSION['numbersChoice']) && ($_SESSION['symbolsChoice'])){
         $arrayConcat = array_merge($letters, $lettersUppercase, $numbers, $symbols);
-    }elseif(isset($_SESSION['lettersChoice']) && isset($_SESSION['numbersChoice'])){
+    }
+    if(($_SESSION['lettersChoice']) && ($_SESSION['numbersChoice'])){
         $arrayConcat = array_merge($letters, $lettersUppercase, $numbers);
-    }elseif(isset($_SESSION['lettersChoice']) && isset($_SESSION['symbolsChoice'])){
+    }
+    if(($_SESSION['lettersChoice']) && ($_SESSION['symbolsChoice'])){
         $arrayConcat = array_merge($letters, $lettersUppercase, $symbols);
-    }elseif(isset($_SESSION['numbersChoice']) && isset($_SESSION['symbolsChoice'])){
+    }
+    if(($_SESSION['numbersChoice']) && ($_SESSION['symbolsChoice'])){
         $arrayConcat = array_merge($numbers, $symbols);
-    }elseif(isset($_SESSION['lettersChoice'])){
+    }
+    if(!($_SESSION['numbersChoice'])&&!($_SESSION['symbolsChoice'])){
         $arrayConcat = array_merge($letters, $lettersUppercase);
-    }elseif(isset($_SESSION['numbersChoice'])){
-        $arrayConcat = array_merge($numbers);
-    }elseif(isset($_SESSION['symbolsChoice'])){
+    }
+    if(!($_SESSION['numbersChoice'])&&!($_SESSION['lettersChoice'])){
         $arrayConcat = array_merge($symbols);
-    }else{
-        $arrayConcat = array_merge($letters, $lettersUppercase, $numbers, $symbols);
+    }
+    if(!($_SESSION['symbolsChoice'])&&!($_SESSION['lettersChoice'])){
+        $arrayConcat = array_merge($numbers);
     }
 
     // array vuoto da riempire con lettere,numeri e simboli per formare la password
