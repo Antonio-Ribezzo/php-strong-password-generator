@@ -24,7 +24,7 @@
     $numbers= range(0,9);
 
     // creo un array di simboli
-    $symbols = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')'];
+    $symbols = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')','<','>'];
 
     // concateno gli array precedenti per formare un unico array da cui prendere gli elementi per creare la password
     $arrayConcat = [];
@@ -67,7 +67,7 @@
             $posizioniRandom=[];
             for($i = 0; $i < $length; $i++){
                 // genero un numero random da zero fino alla lunghezza dell'array da cui    prendere gli elemnti della password
-                $posizioniRandom[]=rand(0,count($startArray));
+                $posizioniRandom[]=rand(0,count($startArray)-1);
             }
             // se l'indice dell'array formato dalla concatenazione è uguale all'elemento random dell'array creato precedentemente, l'elemento in questione viene pushato nell'array arrayComponents 
             foreach($startArray as $chiave => $valore){
